@@ -1,5 +1,4 @@
-// zort.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// This file contains the 'main' function. Program execution begins and ends there.
 
 #include <iostream>
 #include "BallSort.h"
@@ -81,7 +80,7 @@ void runTest1_1(BallSort* test)
     assert(test->getState()->getTube(2).getBall(1) == TestColors::Blue);
     assert(test->getState()->getTube(2).getBall(2) == TestColors::Blue);
 
-    cout << "Ballzy test 1_1" << endl;
+    cout << "Passed test 1-1" << endl;
 }
 
 
@@ -93,7 +92,7 @@ void runTest1_2(BallSort* test)
     assert(test->getState()->isMotionInList(2, 3));
     assert(!test->getState()->isMotionInList(0, 4));
 
-    cout << "Ballzy test 1_2" << endl;
+    cout << "Passed test 1-2" << endl;
 }
 
 
@@ -104,7 +103,7 @@ void runTest1_3(BallSort* test)
     assert(!solution.empty());
 
     printSolution(solution);
-    cout << "Ballzy test 1_3" << endl;
+    cout << "Passed test 1-3" << endl;
 }
 
 
@@ -136,7 +135,7 @@ void runTest2_3(BallSort* test)
     assert(!solution.empty());
 
     printSolution(solution);
-    cout << "Ballzy test 2_3" << endl;
+    cout << "Passed test 2-3" << endl;
 }
 
 void runTest2()
@@ -150,28 +149,15 @@ void runTest2()
 }
 
 
-
 void runTestRun()
 {
-//    runTest1();
+    runTest1();
     runTest2();
-
 }
 
 
 int main()
 {
-    cout << "help!\n";
     runTestRun();
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
