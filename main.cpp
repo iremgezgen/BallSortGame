@@ -42,9 +42,6 @@ void printSolution(vector<State*> solution)
 }
 
 
-
-
-
 BallSort* scenario1() {
 
     BallSort* retval = new BallSort(5, 3, 3);
@@ -67,7 +64,6 @@ BallSort* scenario2() {
 }
 
 
-// unit test for initialization
 void runTest1_1(BallSort* test)
 {
     assert(test->getState()->getTube(0).getBall(0) == TestColors::Red);
@@ -80,7 +76,7 @@ void runTest1_1(BallSort* test)
     assert(test->getState()->getTube(2).getBall(1) == TestColors::Blue);
     assert(test->getState()->getTube(2).getBall(2) == TestColors::Blue);
 
-    cout << "Passed test 1-1" << endl;
+    cout << "-----------------------------------Passed test 1-1" << endl;
 }
 
 
@@ -92,20 +88,18 @@ void runTest1_2(BallSort* test)
     assert(test->getState()->isMotionInList(2, 3));
     assert(!test->getState()->isMotionInList(0, 4));
 
-    cout << "Passed test 1-2" << endl;
+    cout << "-----------------------------------Passed test 1-2" << endl;
 }
 
 
-// unit test for god knows what
 void runTest1_3(BallSort* test)
 {
     vector<State*> solution = test->solve();
     assert(!solution.empty());
 
     printSolution(solution);
-    cout << "Passed test 1-3" << endl;
+    cout << "-----------------------------------Passed test 1-3" << endl;
 }
-
 
 
 void runTest1()
@@ -118,14 +112,43 @@ void runTest1()
     delete test1;
 }
 
+
 void runTest2_1(BallSort* test)
 {
+    assert(test->getState()->getTube(0).getBall(0) == TestColors::Red);
+    assert(test->getState()->getTube(0).getBall(1) == TestColors::Green);
+    assert(test->getState()->getTube(0).getBall(2) == TestColors::Red);
+    assert(test->getState()->getTube(0).getBall(3) == TestColors::Yellow);
+
+    assert(test->getState()->getTube(1).getBall(0) == TestColors::Red);
+    assert(test->getState()->getTube(1).getBall(1) == TestColors::Yellow);
+    assert(test->getState()->getTube(1).getBall(2) == TestColors::Blue);
+    assert(test->getState()->getTube(1).getBall(3) == TestColors::Green);
+
+    assert(test->getState()->getTube(2).getBall(0) == TestColors::Yellow);
+    assert(test->getState()->getTube(2).getBall(1) == TestColors::Green);
+    assert(test->getState()->getTube(2).getBall(2) == TestColors::Blue);
+    assert(test->getState()->getTube(2).getBall(3) == TestColors::Red);
+
+    assert(test->getState()->getTube(3).getBall(0) == TestColors::Blue);
+    assert(test->getState()->getTube(3).getBall(1) == TestColors::Blue);
+    assert(test->getState()->getTube(3).getBall(2) == TestColors::Yellow);
+    assert(test->getState()->getTube(3).getBall(3) == TestColors::Green);
+
+    cout << "-----------------------------------Passed test 2-1" << endl;
 }
 
 
 void runTest2_2(BallSort* test)
 {
+    test->getState()->generateMotions();
+    assert(test->getState()->isMotionInList(0, 4));
+    assert(test->getState()->isMotionInList(1, 4));
+    assert(test->getState()->isMotionInList(2, 4));
+    assert(test->getState()->isMotionInList(3, 4));
+    assert(!test->getState()->isMotionInList(3, 5));
 
+    cout << "-----------------------------------Passed test 2-2" << endl;
 }
 
 
@@ -135,7 +158,7 @@ void runTest2_3(BallSort* test)
     assert(!solution.empty());
 
     printSolution(solution);
-    cout << "Passed test 2-3" << endl;
+    cout << "-----------------------------------Passed test 2-3" << endl;
 }
 
 void runTest2()
@@ -149,15 +172,8 @@ void runTest2()
 }
 
 
-void runTestRun()
+int main()
 {
     runTest1();
     runTest2();
 }
-
-
-int main()
-{
-    runTestRun();
-}
-

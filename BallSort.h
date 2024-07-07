@@ -2,7 +2,7 @@
 
 #include <cstdarg>
 #include <vector>
-#include "state.h"
+#include "State.h"
 #include <set>
 #include <string>
 
@@ -26,7 +26,7 @@ public:
             initial_state = nullptr;
         }
     }
-
+    
     State* getState()
     {
         return initial_state;
@@ -47,18 +47,6 @@ public:
         // Ends the use of va_list 
         va_end(list);
 	}
-
-    /*
-    * initial state
-    * generate motions
-    * push motions
-    * for each motion
-    * generate state (prev = initial)
-    * -- check solution
-    * for each state
-    * if no motion
-    * delete state
-    */
 
 
 	vector<State*> solve()
@@ -103,7 +91,5 @@ public:
 
         return solution;
     }
-
-
 };
 

@@ -3,13 +3,12 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "tube.h"
+#include "Tube.h"
 #include <string>
 
 using namespace std;
 
 typedef pair<int, int> Motion;
-
 
 
 class State {
@@ -25,6 +24,12 @@ private:
     State* next_state;
 
 public:
+    // Constructor to initialize state with a given number of tubes and capacity for each tube
+    State(int tubeCount, int tube_capacity) : tube_count(tubeCount), previous_state(nullptr), tube_capacity(tube_capacity)
+    {
+        tubes = new vector<Tube>(tubeCount, Tube(tube_capacity));
+    }
+
 
     ~State()
     {
@@ -39,12 +44,6 @@ public:
             delete next_state;
             next_state = nullptr;
         }
-    }
-
-    // Constructor to initialize state with a given number of tubes and capacity for each tube
-    State(int tubeCount, int tube_capacity) : tube_count(tubeCount), previous_state(nullptr), tube_capacity(tube_capacity)
-    {
-        tubes = new vector<Tube>(tubeCount, Tube(tube_capacity));
     }
 
     void doMotion(Motion motion)
@@ -101,9 +100,8 @@ public:
                 break;
             }
         }
-
-
     }
+
 
     State* generateNextState()
     {
@@ -125,7 +123,9 @@ public:
         }
     }
 
-    bool noMotionLeft() {
+
+    bool noMotionLeft() 
+    {
         return valid_motions.empty();
     }
 
@@ -152,7 +152,8 @@ public:
         return -1;
     }
 
-    bool canMove(int from, int to) {
+    bool canMove(int from, int to) 
+    {
         // generic motion controls
         if ((from == to)
             || ((*tubes)[from].isEmpty())
@@ -166,7 +167,7 @@ public:
         // dont move from the same colored tube to an empty one
         if ((*tubes)[from].allSame() && (*tubes)[to].isEmpty()) return false; 
 
-        // if from all same ise, daha az all same olan bir to ya koyma
+        // if from is all same colored, dont put another tube with less all same balls
         if ((*tubes)[from].allSame() && (*tubes)[to].allSame() && (*tubes)[from].size() > (*tubes)[to].size()) return false;
 
         // if there is more than one empty tube, choose the first one to avoid multiple moves
@@ -199,12 +200,12 @@ public:
                     }
                 }
             }
-        }
-        
+        }    
     }
    
     // Function to get the number of tubes
-    int getCount() const {
+    int getCount() const 
+    {
         return tube_count;
     }
 
@@ -218,24 +219,27 @@ public:
     }
 
   
-
     // Function to get the vector of all tubes
     const vector<Tube>& getTubes() const {
+
         return (*tubes);
     }
 
     // Function to add a ball to a specific tube by index
-    void addBallToTube(int index, int color) {
+    void addBallToTube(int index, int color) 
+    {
         getTube(index).pushColor(color);
     }
 
     // Function to remove a ball from a specific tube by index
-    int removeBallFromTube(int index) {
+    int removeBallFromTube(int index) 
+    {
         return getTube(index).popColor();
     }
 
     // Function to check if all tubes are in a solved state (all balls in each tube are the same)
-    bool isSolved() const {
+    bool isSolved() const 
+    {
         return all_of(tubes->begin(), tubes->end(), [](const Tube& tube) { return ((tube.allSame() && tube.isFull()) || tube.isEmpty()); });
     }
 
@@ -248,6 +252,4 @@ public:
 
         return false;
     }
-
-
 };

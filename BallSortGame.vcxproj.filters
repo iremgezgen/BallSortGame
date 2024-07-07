@@ -18,21 +18,15 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BallSort.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BallSort.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="motion.h">
+    <ClInclude Include="State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="state.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tube.h">
+    <ClInclude Include="Tube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

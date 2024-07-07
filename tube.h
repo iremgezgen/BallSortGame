@@ -24,23 +24,15 @@ public:
         }
     }
 
-
-
     // Function to check if the tube is full
-    bool isFull() const {
+    bool isFull() const 
+    {
         return balls.size() == capacity;
     }
 
-    // Function to return the first integer (base color)
-    int baseColor() const {
-        if (!balls.empty()) {
-            return balls.front();
-        }
-        //throw out_of_range("Tube is empty");
-    }
-
     // Function to return the last integer (top color)
-    int topColor() const {
+    int topColor() const 
+    {
         if (!balls.empty()) {
             return balls.back();
         }
@@ -49,7 +41,8 @@ public:
     }
 
     // Function to check if all integers are equal
-    bool allSame() const {
+    bool allSame() const 
+    {
         if (balls.empty()) {
             return false; // Consider an empty tube as not all same
         }
@@ -57,7 +50,8 @@ public:
     }
 
     // Function to pop the last integer
-    int popColor() {
+    int popColor() 
+    {
         if (!balls.empty()) {
             int top = balls.back();
             balls.pop_back();
@@ -68,7 +62,8 @@ public:
     }
 
     // Function to add an integer
-    void pushColor(int color) {
+    void pushColor(int color) 
+    {
         if (!isFull()) {
             balls.push_back(color);
         }
@@ -78,17 +73,20 @@ public:
     }
 
     // Function to get the current size of balls
-    int size() const {
+    int size() const 
+    {
         return (int) balls.size();
     }
 
     // Function to get the capacity of the tube
-    int getCapacity() const {
+    int getCapacity() const 
+    {
         return capacity;
     }
 
     // Function to check if the tube is empty
-    bool isEmpty() const {
+    bool isEmpty() const 
+    {
         return balls.empty();
     }
 
